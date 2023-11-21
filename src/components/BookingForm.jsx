@@ -2,7 +2,7 @@ import { useState } from "react";
 
 
 
-function Reservation({availableTimes, dispatch, submitForm}) {
+function BookingForm({ availableTimes, dispatch, submitForm }) {
 
     const [guests, setGuests] = useState("");
     const [date, setDate] = useState("");
@@ -31,7 +31,7 @@ function Reservation({availableTimes, dispatch, submitForm}) {
                             <label htmlFor="book-time">Choose Time</label>
                             <select id="book-time" value={times} onChange={(e) => setTimes(e.target.value)} required>
                                 <option value="">Select a Time</option>
-                                {availableTimes.availableTimes.map(availableTimes => {return <option key={availableTimes}>{availableTimes}</option>})}
+                                {availableTimes.availableTimes.map(availableTimes => { return <option key={availableTimes}>{availableTimes}</option> })}
                             </select>
                         </div>
                         <div>
@@ -48,4 +48,4 @@ function Reservation({availableTimes, dispatch, submitForm}) {
     );
 };
 
-export default Reservation;
+export default BookingForm;

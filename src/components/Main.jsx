@@ -1,13 +1,13 @@
 import { Routes, Route } from "react-router-dom";
 import Header from "./Header";
-import Reservation from "./Reservation";
 import ConfirmedReservation from "./ConfirmedReservation";
 import { useNavigate } from "react-router-dom";
 import { useReducer } from "react";
+import Booking from "./Booking";
 function Main() {
 
     const seededRandom = function (seed) {
-        var m = 2**35 - 31;
+        var m = 2 ** 35 - 31;
         var a = 185852;
         var s = seed % m;
         return function () {
@@ -15,15 +15,15 @@ function Main() {
         };
     }
 
-    const fetchAPI = function(date) {
+    const fetchAPI = function (date) {
         let result = [];
         let random = seededRandom(date.getDate());
 
-        for(let i = 17; i <= 23; i++) {
-            if(random() < 0.5) {
+        for (let i = 17; i <= 23; i++) {
+            if (random() < 0.5) {
                 result.push(i + ':00');
             }
-            if(random() < 0.5) {
+            if (random() < 0.5) {
                 result.push(i + ':30');
             }
         }
@@ -46,7 +46,7 @@ function Main() {
         <main>
             <Routes>
                 <Route path="/" element={<Header />} />
-                <Route path="/reservations" element={<Reservation availableTimes={state} dispatch={dispatch} submitForm={submitForm} />} />
+                <Route path="/reservations" element={<Booking availableTimes={state} dispatch={dispatch} submitForm={submitForm} />} />
                 <Route path="/confirmed" element={<ConfirmedReservation />} />
             </Routes>
         </main>
